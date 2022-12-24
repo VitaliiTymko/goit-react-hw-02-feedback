@@ -1,4 +1,5 @@
 import React from 'react';
+import css from './Feedback.module.css';
 
 class Feedback extends React.Component {
   state = {
@@ -39,16 +40,28 @@ class Feedback extends React.Component {
 
   render() {
     return (
-      <div>
+      <div className={css.boxFeedback}>
         <h1>Please leave feedback</h1>
         <div>
-          <button type="button" onClick={this.addsReviewGood}>
+          <button
+            type="button"
+            className={css.buttonGood}
+            onClick={this.addsReviewGood}
+          >
             Good
           </button>
-          <button type="button" onClick={this.addsReviewNeutral}>
+          <button
+            type="button"
+            className={css.buttonNeutral}
+            onClick={this.addsReviewNeutral}
+          >
             Neutral
           </button>
-          <button type="button" onClick={this.addsReviewBad}>
+          <button
+            type="button"
+            className={css.buttonBad}
+            onClick={this.addsReviewBad}
+          >
             Bad
           </button>
         </div>
@@ -59,10 +72,12 @@ class Feedback extends React.Component {
           {this.state.neutral > 0 && <p>Neutral: {this.state.neutral}</p>}
           {this.state.bad > 0 && <p>Bad: {this.state.bad}</p>}
           {this.countTotalFeedback() > 0 && (
-            <p>Total: {this.countTotalFeedback()}</p>
+            <p className={css.textTotal}>Total: {this.countTotalFeedback()}</p>
           )}
           {this.countTotalFeedback() > 0 && (
-            <p>Positive feedback:{this.countPositiveFeedbackPercentage()}%</p>
+            <p className={css.positiveFeedback}>
+              Positive feedback: {this.countPositiveFeedbackPercentage()}%
+            </p>
           )}
         </div>
       </div>
