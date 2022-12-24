@@ -24,8 +24,19 @@ class Feedback extends React.Component {
       return { bad: prevState.bad + 1 };
     });
   };
-  // const totalReview = Number{ this.addsReviewGood } + Number{ this.addsReviewNeutral } + Number{ this.addsReviewBad }
-  // console.log(totalReview);
+
+  countTotalFeedback = () => {
+    let TotalReviews = this.state.good + this.state.neutral + this.state.bad;
+    return TotalReviews;
+  };
+
+  countPositiveFeedbackPercentage = () => {
+    let FeedbackPercentage = Math.round(
+      (this.state.good / this.countTotalFeedback()) * 100
+    );
+    return FeedbackPercentage;
+  };
+
   render() {
     return (
       <div>
@@ -43,10 +54,16 @@ class Feedback extends React.Component {
         </div>
         <h2>Statistics</h2>
         <div>
+          {this.countTotalFeedback() === 0 && <p>There is no feedback</p>}
           {this.state.good > 0 && <p>Good: {this.state.good}</p>}
           {this.state.neutral > 0 && <p>Neutral: {this.state.neutral}</p>}
           {this.state.bad > 0 && <p>Bad: {this.state.bad}</p>}
-          {/* <p>Total{totalReview }</p> */}
+          {this.countTotalFeedback() > 0 && (
+            <p>Total: {this.countTotalFeedback()}</p>
+          )}
+          {this.countTotalFeedback() > 0 && (
+            <p>Positive feedback:{this.countPositiveFeedbackPercentage()}%</p>
+          )}
         </div>
       </div>
     );
