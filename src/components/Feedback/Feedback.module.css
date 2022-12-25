@@ -20,6 +20,7 @@ button {
 
 button:hover {
   background-color: rgb(106, 103, 165);
+  transform: scale(1.25);
 }
 
 .buttonGood {
