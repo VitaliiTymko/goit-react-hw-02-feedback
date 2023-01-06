@@ -15,6 +15,7 @@ class Feedback extends React.Component {
     this.setState(prevstate => {
       return { [option]: prevstate[option] + 1 };
     });
+    console.log('button +1');
   };
 
   countTotalFeedback = () => {
